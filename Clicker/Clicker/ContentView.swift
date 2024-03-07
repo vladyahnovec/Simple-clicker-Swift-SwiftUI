@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Clicker
-//
-//  Created by Круглич Влад on 6.03.24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -21,7 +14,7 @@ struct ContentView: View {
             return nil
         }
     }
-    
+        
     @State var count = 0
     @State var target = 10
     @State var text = ""
@@ -33,20 +26,20 @@ struct ContentView: View {
                     .frame(height: geometry.size.height / 2)
                 Text(text)
                     .multilineTextAlignment(.center)
-                    .frame(height: 200)
+                    .frame(height: 150)
                     .font(.custom("Montserrat-Light", size: 25))
                 Button(action: {
                     count = countClick(count)
                     (text, target) = textOutput(count, target) ?? ("", target)
                 }) {
                     Text("Click!")
-                        .frame(width: geometry.size.width / 2, height: geometry.size.height / 10)
+                        .frame(width: geometry.size.width / 2, height: geometry.size.width / 2)
                         .background(Color.circleBgColorFirst)
                         .foregroundColor(.whiteCircleColor)
-                        .cornerRadius(120)
+                        .cornerRadius(100)
                         .font(.custom("Montserrat-Bold", size: 30))
                 }
-                .padding(.top, 20)
+                .padding(.top, 0)
             }
             .padding()
         }
@@ -77,11 +70,20 @@ struct cirlceBg : View {
                             .padding(.leading, 80)
                     }
                 }
-                HStack() {
+                VStack() {
                     Text("\(count)")
                            .foregroundColor(Color.whiteCircleColor)
-                           .font(.custom("Montserrat-Bold", size: 100))
-                           .padding(.top, -100)
+                           .font(.custom("Montserrat-Bold", size: 120))
+                           .padding(.bottom, 30)
+                    Button(action: {
+                        count = 0
+                    }) {
+                        Text("Clear")
+                            .foregroundColor(Color.whiteCircleColor)
+                            .font(.system(size: 30))
+                            .frame(width: 120, height: 80)
+                    }
+
                 }
             }
             .frame(width: geometry.size.width)
